@@ -1,89 +1,76 @@
 // import functions and grab DOM elements
-const imgStar = document.getElementById('bucket-star-img');
-const imgSquare = document.getElementById('bucket-square-img');
-const imgCircle = document.getElementById('bucket-circle-img');
+const firstButton = document.getElementById('first-troll-button');
+const secondButton = document.getElementById('second-troll-button');
+const thirdButton = document.getElementById('third-troll-button');
 
-const buttonStar = document.getElementById('bucket-star-button')
-const buttonSquare = document.getElementById('bucket-square-button')
-const buttonCircle = document.getElementById('bucket-circle-button')
 
-const hitsEl = document.getElementById('hits')
-const failsEl = document.getElementById('fails')
-const playsEl = document.getElementById('plays')
-// let state
-let rightPlays = 0;
-let overallPlays = 0;
-// set event listeners 
-function displayHitsFailsAndPlays() {
-  hitsEl.textContent = rightPlays;
-  playsEl.textContent = overallPlays;
-  failsEl.textContent = overallPlays - rightPlays;
-}
-function resetImages() {
-  imgStar.src = './assets/bucket.png';
-  imgSquare.src = './assets/bucket.png';
-  imgCircle.src = './assets/bucket.png';
-}
+const firstTroll = document.getElementById('first-troll');
+const secondTroll = document.getElementById('second-troll');
+const thirdTroll = document.getElementById('third-troll');
 
-buttonStar.addEventListener('click', () => {
-resetImages();
+const totalEl = document.getElementById('total');
+const winsEl = document.getElementById('wins');
+const lossesEl = document.getElementById('losses');
 
-  overallPlays++;
+const hidingPlaces = [
+    'first',
+    'second',
+    'third'
+];
 
-const randomBucketNumber = Math.floor(Math.random() *3);
+let rightChoices = 0;
+let totalChoices = 0;
 
-if(randomBucketNumber === 0) {
+function getRandomItem(arr) {
+    const index = Math.floor(Math.random() * arr.length);
 
-  rightPlays++;
-  imgStar.src = './assets/right-bucket.png'; 
-} else if (randomBucketNumber === 1) {
-  imgSquare.src = './assets/right-bucket.png';
-} else {
-  imgCircle.src = './assets/right-bucket.png';
+    return arr[index];
 }
 
-displayHitsFailsAndPlays()
+function handleGuess(userGuess, correctSpot) {
+    // should reset the styles
+    resetStyles();
+    // then increment the guesses
+    totalChoices++;
+    // then grab the appropriate container element for the correct guess from the DOM
+    const correctHidingPlaceEl = document.getElementById(`${correctSpot}-troll`);
+    // then add the face class to that element so that the face shows up
+    correctHidingPlaceEl.classList.add('face');
+    // then if the user guess is correct, increment the correct guesses
+    if (userGuess === correctSpot) {
+        rightChoices++;
+    }
+    // update the DOM to show this change to the user (including the losses, not tracked directly in state)
+    totalEl.textContent = totalChoices;
+    winsEl.textContent = rightChoices;
+    lossesEl.textContent = totalChoices - rightChoices;
+
+} 
+
+firstButton.addEventListener('click', () => {
+    // should get a random item to call the 'correct spot'
+    const correctSpot = getRandomItem(hidingPlaces);
+    // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess('first', correctSpot);
 });
 
-buttonSquare.addEventListener('click', () => {
-  resetImages();
-
-  overallPlays++;
-
-const randomBucketNumber = Math.floor(Math.random() *3);
-
-if(randomBucketNumber === 0) {
-
-  rightPlays++;
-  imgStar.src = './assets/right-bucket.png'; 
-} else if (randomBucketNumber === 1) {
-  imgSquare.src = './assets/right-bucket.png';
-} else {
-  imgCircle.src = './assets/right-bucket.png';
-}
-
-displayHitsFailsAndPlays()
+secondButton.addEventListener('click', () => {
+    // should get a random item to call the 'correct spot'
+    const correctSpot = getRandomItem(hidingPlaces);
+    // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess('second', correctSpot);
 });
 
-buttonCircle.addEventListener('click', () => {
-  resetImages();
-
-  overallPlays++;
-
-const randomBucketNumber = Math.floor(Math.random() *3);
-
-if(randomBucketNumber === 0) {
-
-  rightPlays++;
-  imgStar.src = './assets/right-bucket.png'; 
-} else if (randomBucketNumber === 1) {
-  imgSquare.src = './assets/right-bucket.png';
-} else {
-  imgCircle.src = './assets/right-bucket.png';
-}
-
-displayHitsFailsAndPlays()
+thirdButton.addEventListener('click', () => {
+    // should get a random item to call the 'correct spot'
+    const correctSpot = getRandomItem(hidingPlaces);
+    // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess('third', correctSpot);
 });
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+
+function resetStyles() {
+    firstTroll.classList.remove('face');
+    secondTroll.classList.remove('face');
+    thirdTroll.classList.remove('face');
+    // should remove the face class from all containers
+}

@@ -2,12 +2,6 @@
 body {
     /* feel free to update these css variables for a quick theme */
     
-    --color1: black;
-    --color2: black;
-    --color3:black;
-    --color4:black;
-    --color5:black ;
-    
     /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
         
     /* --color1: hsla(349, 69%, 76%, 1);
@@ -29,6 +23,10 @@ body {
     
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--color2);
+    background-image: url(../assets/forest.jpeg);
+    background-size: cover;
+    text-align: center;
+    color: floralwhite;
 }
 
 main {
@@ -90,35 +88,46 @@ footer {
     box-shadow: var(--shadow);
 }
 
-.buckets {
+@keyframes pulse {
+    20% {
+      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
+    }
 
+    40% {
+        transform: rotate3d(10, 10, -10, 50deg) scale(1);
+    }
+
+    60% {
+        transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
+      }
+
+    80% {
+        transform: rotate3d(10, 10, 10, 50deg) scale(1);
+    }
+
+  }
+
+  .hiding-places {
+      height: 300px;
+      display:flex;
+  }
+
+  .hiding-place {
+    height: 300px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    height: 400px;
-}
-.bucket {
-    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
-.bucket img {
+
+.hiding-troll {
     width: 200px;
-    height: 250px;
-}
-.bucket button {
-    background-color: yellow;
+    height: 200px;
     margin: 10px;
-    padding: 20px;
-    width: 100px;
-    color: hotpink;
-    cursor: pointer;
 }
 
-.answers {
-    color: plum;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 10px;
-    width: 30px;
+.face::after {
+    font-size: 8rem;
+    content: '💰';
+    position: absolute;
 }

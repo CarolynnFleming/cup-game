@@ -16,27 +16,28 @@
     
     <main>
         <section class="main-section">
-            <div class = "buckets">
-                <div class ="bucket">
-                    <img src ="./assets/bucket.png" id="bucket-star-img"/>
-                    <button id = "bucket-star-button">Pick</button>
-                </div>
-                <div class ="bucket">
-                    <img src ="./assets/bucket.png" id="bucket-square-img"/>
-                    <button id = "bucket-square-button">Pick</button>
-                </div>
-                <div class ="bucket">
-                    <img src ="./assets/bucket.png" id="bucket-circle-img"/>
-                    <button id = "bucket-circle-button">Pick</button>
-                </div>
-                
-            
-        </section>
-                <div class="answers">
-                    <div>Hits: <span id="hits">0</span></div>
-                    <div>Fails: <span id="fails">0</span></div>
-                    <div>Plays: <span id="plays">0</span></div>
-                </div>
+               <h1>
+                   Guess the correct troll!
+               </h1>
+               <div id="first-troll" class="hiding-places">
+                   <div class="hiding-place">
+                        <img src="./assets/first-troll.png" class="hiding-troll" />
+                        <button id="first-troll-button">Stumpy</button> 
+                   </div>
+                   <div id="second-troll" class="hiding-place">
+                    <img src="./assets/second-troll.webp" class="hiding-troll" />
+                    <button id="second-troll-button">Belinda</button>
+                   </div>
+                   <div id="third-troll" class="hiding-place">
+                    <img src="./assets/third-troll.webp" class="hiding-troll" />
+                    <button id="third-troll-button">Jacinda</button>
+                   </div>
+               </div>
+               <div>right choice <span id="wins">0</span> times</div>
+            <div>and wrong <span id="losses">0</span> times</div>
+            <div>out of</div>
+            <div> <span id="total">0</span> games.</div>
+            </section>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
